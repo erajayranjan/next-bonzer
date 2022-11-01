@@ -5,7 +5,7 @@
     import CardMedia from '@mui/material/CardMedia';
     import Button from '@mui/material/Button';
     import Typography from '@mui/material/Typography';
-import CommonList from './commonList';
+    import CommonList from './CommonList';
     
     export default function CourseCard() {
         const course={

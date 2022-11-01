@@ -1,4 +1,4 @@
-import NavBar from "./NavBar"
+import NavBar from "../components/navBar"
 // import '../globals.css'
 import Head from 'next/head'
 import { appDetails } from "../constants/appDetails"
