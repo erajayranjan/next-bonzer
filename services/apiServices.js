@@ -14,7 +14,7 @@
     if (typeof window !== 'undefined') {
         // Perform localStorage action
         var bonzerCode=JSON.parse(localStorage.getItem('bonzerCode'))
-        console.log(bonzerCode.token)
+        // console.log(bonzerCode.token)
       }
     
     const apiCall = axios.create({  
