@@ -1,4 +1,5 @@
 import DynamicForm from '../components/features/DynamicForm'
+import DynamicTable from '../components/features/DynamicTable'
 import { appDetails } from '../constants/appDetails'
 import { saveData } from '../services/apiServices'
 import SignIn from './sign-in'
@@ -10,7 +11,8 @@ export default function Home() {
         {/* <h1 className="text-red-500">
           <a href="https://w3schools.com/">{appDetails.appTitle}! </a>
         </h1> */}
-          <DynamicForm />
+          <DynamicTable />
+          {/* <DynamicForm /> */}
         {/* <SignIn /> */}
     </>
   )
