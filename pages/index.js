@@ -1,3 +1,4 @@
+import DynamicForm from '../components/features/DynamicForm'
 import { appDetails } from '../constants/appDetails'
 import { saveData } from '../services/apiServices'
 import SignIn from './sign-in'
@@ -6,9 +7,10 @@ export default function Home() {
   return (
     <>
           {/* <p>{process.env.NEXT_PUBLIC_APP_TITLE} </p> */}
-        <h1 className="text-red-500">
-          Welcome to <a href="https://w3schools.com/">{appDetails.appTitle}! </a>
-        </h1>
+        {/* <h1 className="text-red-500">
+          <a href="https://w3schools.com/">{appDetails.appTitle}! </a>
+        </h1> */}
+          <DynamicForm />
         {/* <SignIn /> */}
     </>
   )
