@@ -13,7 +13,7 @@ const rowsArray = [
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
   ];
   
-const DynamicTable = () => {
+const DataGrid = () => {
 
     const [rows, setRows] = useState(rowsArray || []);
     const [loading, setLoading] = useState(false);
@@ -76,7 +76,7 @@ useEffect(() => {
 
   return (
     <div>
-        <h3>DynamicTable</h3>
+        <h3>DataGrid</h3>
         <div>
             {/* <button onClick={onSort("firstName")}>Sort</button> */}
             <table>
@@ -135,7 +135,7 @@ useEffect(() => {
   )
 }
 
-export default DynamicTable 
+export default DataGrid 
 
 
 // import * as React from 'react';

@@ -1,8 +1,9 @@
 import DynamicForm from '../components/features/DynamicForm'
-import DynamicTable from '../components/features/DynamicTable'
+import DataGrid from '../components/features/DataGrid'
 import { appDetails } from '../constants/appDetails'
 import { saveData } from '../services/apiServices'
 import SignIn from './sign-in'
+import TestPage from './TestPage'
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
         {/* <h1 className="text-red-500">
           <a href="https://w3schools.com/">{appDetails.appTitle}! </a>
         </h1> */}
-          <DynamicTable />
+        <TestPage />
+          <DataGrid />
           {/* <DynamicForm /> */}
         {/* <SignIn /> */}
     </>
