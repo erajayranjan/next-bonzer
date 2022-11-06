@@ -5,7 +5,7 @@
 
 
 .example-container {
-    background-color: aqua;
+    /* background-color: aqua; */
     height: 400px;
     width: 550px;
     overflow: auto;

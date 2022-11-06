@@ -3,6 +3,6 @@ export const appDetails={
     appTitle:"Bonzer Code",
     APP_NAME:"bonzerCode",
     APP_TITLE:"Bonzer Code",
-    APP_LOGO:"BonzerCode",
+    APP_LOGO:"BonzerUI",
     APP_TAGLINE:"Coding simplified.",
 }

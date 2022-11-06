@@ -68,7 +68,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            {appDetails.NEXT_PUBLIC_APP_LOGO}
+            {appDetails.APP_LOGO}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
