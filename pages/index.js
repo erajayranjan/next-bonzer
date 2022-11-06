@@ -8,9 +8,9 @@ import TestPage from './TestPage'
 export default function Home() {
   return (
     <>
-          {/* <p>{process.env.NEXT_PUBLIC_APP_TITLE} </p> */}
+          {/* <p>{appDetails.NEXT_PUBLIC_APP_TITLE} </p> */}
         {/* <h1 className="text-red-500">
-          <a href="https://w3schools.com/">{appDetails.appTitle}! </a>
+          <a href="https://w3schools.com/">{appDetails.APP_TITLE}! </a>
         </h1> */}
         <TestPage />
           <DataGrid />

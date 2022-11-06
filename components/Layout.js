@@ -7,7 +7,7 @@ const Layout = ({children}) => {
   return (
     <div className="">
         <Head>
-            <title>{appDetails.appTitle}</title>
+            <title>{appDetails.APP_TITLE}</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="flex justify-between align-items-center flex-col min-h-screen ">

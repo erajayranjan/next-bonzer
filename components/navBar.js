@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
+import { appDetails } from '../constants/appDetails';
 
 const pages = [
   {id:1, title:'Home', link:'/'}, 
@@ -67,7 +68,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            {process.env.NEXT_PUBLIC_APP_LOGO}
+            {appDetails.NEXT_PUBLIC_APP_LOGO}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -128,7 +129,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            {process.env.NEXT_PUBLIC_APP_LOGO}
+            {appDetails.NEXT_PUBLIC_APP_LOGO}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
