@@ -38,7 +38,7 @@ export default function CommonList({listArray}) {
                                 }
                             />
                         </ListItem>
-                    <Divider variant="inset" component="li" />
+                    <Divider variant="middle" component="li" />
                     </div>
                 )
             })

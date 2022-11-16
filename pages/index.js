@@ -4,6 +4,7 @@ import { appDetails } from '../constants/appDetails'
 import { saveData } from '../services/apiServices'
 import SignIn from './sign-in'
 import TestPage from './TestPage'
+import Hero from '../components/Hero'
 
 export default function Home() {
   return (
@@ -12,8 +13,9 @@ export default function Home() {
         {/* <h1 className="text-red-500">
           <a href="https://w3schools.com/">{appDetails.APP_TITLE}! </a>
         </h1> */}
-        <TestPage />
-          <DataGrid />
+        <Hero />
+        {/* <TestPage />
+          <DataGrid /> */}
           {/* <DynamicForm /> */}
         {/* <SignIn /> */}
     </>

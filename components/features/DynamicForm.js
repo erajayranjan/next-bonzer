@@ -1,29 +1,21 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
+import Button from '../utilities/Button'
 
-const DynamicForm = () => {
+const DynamicForm = ({formData, loading, onSubmit}) => {
 
     const [formInputs, setFormInputs] = useState({})
-const formData={
-    title:"Sign up",
-    formLogo:"FORM_LOGO",
-    submitBtnText:"",
-    cancelBtnText:"",
-    formFields:[
-        {id:1, name:"name", label:"Name", placeHolder:"Enter name!", type:"text", required:true },
-        {id:2, name:"email", label:"Email", placeHolder:"Enter email!", type:"email", required:true },
-        {id:3, name:"password", label:"Password", placeHolder:"Enter password!", type:"password", required:true },
-        {id:4, name:"gender", label:"Gender", placeHolder:"Enter gender!", type:"select", required:true ,options:[{id:1, value:"male", label:"Male"},{id:2, value:"female", label:"Female"},{id:3, value:"other", label:"Other"}] },
-        {id:5, name:"nationality", label:"Nationality", placeHolder:"Enter nationality!", type:"radio", required:true, options:[{id:1, value:"indian", label:"Indian"},{id:2, value:"other", label:"Other"}] },
-        {id:6, name:"termsAccepted", label:"Terms Accepted", placeHolder:"Please accept terms to proceed!", type:"checkbox", required:true },
-        
-    ]
-}
+    // const [loadingSpinner, setLoadingSpinner] = useState(loading || false)
+
 
 const handleSubmit=async(evt) => { 
     evt.preventDefault()
+    // setLoadingSpinner               (true)
     const data=new FormData(evt.currentTarget)
     // formData.formFields.forEach(e=>setFormInputs({...formInputs, [e.name]:data.get(e.name)}))
-    console.log( formInputs );
+    // console.log( formInputs );
+    const res= await onSubmit(formInputs);
+    res && res.status && console.log(res)
  }
 
  const handleCancel=() => { 
@@ -35,7 +27,7 @@ const handleSubmit=async(evt) => {
     // const data=new Form
      let {name, value, type, required, checked}=evt.target;
      value=type==="checkbox" ? checked : value;
-     console.log(name, ">>", value)
+    //  console.log(name, ">>", value)
     setFormInputs({...formInputs, [name]:value})
   }
 
@@ -74,7 +66,7 @@ const handleSubmit=async(evt) => {
                             : field.type==="checkbox" ?
                             <div className='p-1 mx-5 flex justify-between w-1/2' key={index}>
                                 <label className='w-1/3'>{field.label}</label>
-                                <input className={field.className + " w-2/3 p-1 "} 
+                                <input className={field.className + " left-0 w-2/3 h-5 "} 
                                 onChange={handleChange}
                                     name={field.name} placeholder={field.placeHolder} type={field.type} required={field.required} />
                             </div>
@@ -82,10 +74,36 @@ const handleSubmit=async(evt) => {
                     )
                 })
             }
-            <button className='bg-blue-500 m-2 px-2 rounded text-blue-50' type='submit'>{ formData.submitBtnText || "Submit"}</button>
-            <button className='bg-red-500 m-2 px-2 rounded text-red-50' type='button' onClick={handleCancel} >{ formData.cancelBtnText || "Cancel"}</button>
+            <Button 
+                type={"submit"}
+                loading={loading || false}
+                title={ formData.submitBtnText || "Submit"}
+            />
+            <Button 
+                type={"reset"}
+                title={ formData.resetBtnText || "Reset"}
+                // onClick={handleCancel}
+            />
+            {/* <Button 
+                type={"reset"}
+                title={ formData.cancelBtnText || "Cancel"}
+                onClick={handleCancel}
+            /> */}
+            {/* <button className='bg-blue-500 m-2 px-2 rounded text-blue-50' type='submit'>{ formData.submitBtnText || "Submit"}</button>
+            <button className='bg-red-500 m-2 px-2 rounded text-red-50' type='button' onClick={handleCancel} >{ formData.cancelBtnText || "Cancel"}</button> */}
 
         </form>
+        <div>
+            { formData.additonalLinks && 
+                formData.additonalLinks.map((link, index)=>{
+                    return (
+                        <Link key={index} href={link.link}>
+                            {link.title}
+                        </Link>
+                    )
+                })
+            }
+        </div>
     </div>
   )
 }

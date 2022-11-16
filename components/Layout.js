@@ -14,7 +14,7 @@ const Layout = ({children}) => {
             {/* <h2 className="text-blue-700" >Hello</h2> */}
             <main>
                 <NavBar />
-                <div className="p-5">
+                <div className="max-w-screen-xl px-8 py-8 mx-auto">
                     {children}
                 </div>
             </main>
