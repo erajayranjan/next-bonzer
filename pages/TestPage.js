@@ -18,7 +18,7 @@ const TestPage = () => {
     return (
     <div>TestPage
 
-<div class="example-container mat-elevation-z8">
+<div className="example-container mat-elevation-z8">
   <table className='table '>
       <thead className='mat-table-sticky'>
         <tr className='mat-column-position'>

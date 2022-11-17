@@ -80,7 +80,7 @@ const Courses = () => {
       {
         courses.map((course, index)=>{
           return(
-            <CourseCard course={course} />
+            <CourseCard key={index} course={course} />
           )
         })
       }

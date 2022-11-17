@@ -2,22 +2,22 @@ import React from "react";
 
 const TestimonialSlide = ({detail}) => {
   return (
-    <div class="mb-12 md:mb-0">
-      <div class="flex justify-center mb-6">
+    <div className="mb-12 md:mb-0">
+      <div className="flex justify-center mb-6">
         <img
           src={detail.imgUrl}
-          class="rounded-full shadow-lg w-32"
+          className="rounded-full shadow-lg w-32"
         />
       </div>
-      <h5 class="text-lg font-bold mb-4">{detail.name}</h5>
-      <h6 class="font-medium text-blue-600 mb-4">{detail.designation}</h6>
-      <p class="mb-4">
+      <h5 className="text-lg font-bold mb-4">{detail.name}</h5>
+      <h6 className="font-medium text-blue-600 mb-4">{detail.designation}</h6>
+      <p className="mb-4">
         <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
           data-icon="quote-left"
-          class="w-6 pr-2 inline-block"
+          className="w-6 pr-2 inline-block"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -29,14 +29,14 @@ const TestimonialSlide = ({detail}) => {
         </svg>{detail.message}
        
       </p>
-      {/* <ul class="flex justify-center mb-0">
+      {/* <ul className="flex justify-center mb-0">
         <li>
           <svg
             aria-hidden="true"
             focusable="false"
             data-prefix="fas"
             data-icon="star"
-            class="w-4 text-yellow-500"
+            className="w-4 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -53,7 +53,7 @@ const TestimonialSlide = ({detail}) => {
             focusable="false"
             data-prefix="fas"
             data-icon="star"
-            class="w-4 text-yellow-500"
+            className="w-4 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -70,7 +70,7 @@ const TestimonialSlide = ({detail}) => {
             focusable="false"
             data-prefix="fas"
             data-icon="star"
-            class="w-4 text-yellow-500"
+            className="w-4 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -87,7 +87,7 @@ const TestimonialSlide = ({detail}) => {
             focusable="false"
             data-prefix="fas"
             data-icon="star"
-            class="w-4 text-yellow-500"
+            className="w-4 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -104,7 +104,7 @@ const TestimonialSlide = ({detail}) => {
             focusable="false"
             data-prefix="fas"
             data-icon="star-half-alt"
-            class="w-4 text-yellow-500"
+            className="w-4 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 536 512"

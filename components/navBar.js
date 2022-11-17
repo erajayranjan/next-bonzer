@@ -18,11 +18,20 @@ import { appDetails } from '../constants/appDetails';
 const pages = [
   {id:1, title:'Home', link:'/'}, 
   {id:2, title:'Courses', link:'courses'},
+  // {id:3, title:'Sign in', link:'sign-in'},
+  // {id:4, title:'Sign up', link:'sign-up'},
+  {id:5, title:'About', link:'about'},
+  {id:6, title:'Contact', link:'contact'},
+
+];
+const settings = [
+  {id:1, title:'Profile', link:'profile'}, 
+  {id:2, title:'Dashboard', link:'dashboard'},
   {id:3, title:'Sign in', link:'sign-in'},
   {id:4, title:'Sign up', link:'sign-up'},
-  {id:5, title:'about', link:'about'},
+  {id:5, title:'Logout', link:'logout'},
+
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -167,9 +176,11 @@ function NavBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link key={setting.id} href={setting.link} style={{textDecoration:"none", color:"#333"}}>
+                  <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.title}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
