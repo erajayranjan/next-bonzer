@@ -43,7 +43,6 @@ const addCourse = () => {
 
     const onSubmit=async (data) => { 
         setloading(true)
-        console.log(data);
         let res=await saveData  ("course/add-course",{
             ...data
         })
