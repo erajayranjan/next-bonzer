@@ -92,6 +92,14 @@ const handleSubmit=async(evt) => {
                                 onChange={handleChange}
                                     name={field.name} placeholder={field.placeHolder} type={field.type} required={field.required} pattern={field.pattern} />
                             </div>
+                             :                                                                   
+                             field.type==="file" ?
+                            <div className='m-1 p-2 mx-5 flex justify-between' key={index}>
+                                {/* <label className=''>{field.label} {field.required && "*"}</label> */}
+                                <input className={field.className + "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "} 
+                                onChange={handleChange}
+                                    name={field.name} type={field.type} required={field.required}  />
+                            </div>
                             : ""
                     )
                 })
