@@ -13,6 +13,7 @@ const profile = () => {
     if(res){
         if(res.status===200){
             alert(`${JSON.stringify(res)}`)
+            console.log(res);
             setUser(res.data.user)
         }
         else{
@@ -32,7 +33,14 @@ const profile = () => {
   return (
     <div>My Profile
       {
-        user && user.name && <h2>Name:  {user.name} </h2>
+        user && 
+        <div> 
+          <h2>Name:  {user.name} </h2>
+          <h2>Email:  {user.email} </h2>
+          <h2>Role:  {user.role} </h2>
+          <h2>Contact:  {user.contact} </h2>
+        </div>
+
       }
     </div>
   )
