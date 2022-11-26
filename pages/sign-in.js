@@ -11,14 +11,22 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { saveData } from '../services/apiServices';
+import { getData, saveData } from '../services/apiServices';
+import { useEffect, useState } from 'react';
 
 const theme = createTheme();
 
 export default  function SignIn() {
 
+  
+  const [loading, setloading] = useState(false)
+  const [user, setUser] = useState({})
+  const [token, setToken] = useState("")
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    localStorage.removeItem("bonzerCode");
     const data = new FormData(event.currentTarget);
     let res=await saveData("auth/login",{
       email: data.get('email'),
@@ -26,10 +34,41 @@ export default  function SignIn() {
     })
     if(res){
       res.data && res.data.token && localStorage.setItem("bonzerCode",JSON.stringify({token:res.data.token}))
-    alert(res.status===200 ? ( res.data.message ||"Successfully Logged In!" ): res.response && res.response.data && res.response.data.error ? res.response.data.error : res.message)
+      setToken(res.data.token);
+      setTimeout(() => {
+        loadProfile()
+      }, 1000);
+    console.log(res.status===200 ? ( res.data.message ||"Successfully Logged In!" ): res.response && res.response.data && res.response.data.error ? res.response.data.error : res.message)
     }
-    else{ alert("Some unknown error occoured!") }
+    else{ console.log("Some unknown error occoured!") }
   };
+
+
+  const loadProfile= async () => { 
+    setloading(true)
+    let res=await getData("auth")
+    res && console.log(res);
+    if(res){
+        if(res.status===200){
+            alert(`${JSON.stringify(res)}`)
+            setUser(res.data.user)
+            res.data && res.data.token && localStorage.setItem("user",JSON.stringify({user:res.data.user}))
+        }
+        else{
+            alert(`${JSON.stringify(res.response.data.error)}`)
+        }
+    }
+    setTimeout(() => {
+        setloading(false)
+    }, 500); 
+    return {status:true}
+   }
+
+  useEffect(() => {
+    // token && setTimeout(() => {
+    //   loadProfile()
+    // }, 500);
+  }, [token])
 
   return (
     <ThemeProvider theme={theme}>
