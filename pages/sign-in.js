@@ -1,5 +1,5 @@
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -13,67 +13,50 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { getData, saveData } from '../services/apiServices';
 import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import authContext from '../context/authContext';
+import { useRouter } from 'next/router';
+import Button from '../components/utilities/Button';
 
 const theme = createTheme();
 
 export default  function SignIn() {
 
-  
-  const [loading, setloading] = useState(false)
-  const [user, setUser] = useState({})
-  const [token, setToken] = useState("")
+  const router = useRouter()
+
+  const {status, setStatus, loading, setloading, user, setUser, token, setToken} = useContext(authContext);  
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setloading(true)
     localStorage.removeItem("bonzerCode");
     const data = new FormData(event.currentTarget);
     let res=await saveData("auth/login",{
       email: data.get('email'),
       password: data.get('password'),
     })
-    if(res){
+    if(res && res.data && res.data.token){
       res.data && res.data.token && localStorage.setItem("bonzerCode",JSON.stringify({token:res.data.token}))
       setToken(res.data.token);
+      setStatus(true);
       setTimeout(() => {
-        loadProfile()
+        router.push("dashboard")
+        setloading(false)
+
       }, 1000);
     console.log(res.status===200 ? ( res.data.message ||"Successfully Logged In!" ): res.response && res.response.data && res.response.data.error ? res.response.data.error : res.message)
     }
     else{ console.log("Some unknown error occoured!") }
+    setloading(false)
   };
-
-
-  const loadProfile= async () => { 
-    setloading(true)
-    let res=await getData("auth")
-    res && console.log(res);
-    if(res){
-        if(res.status===200){
-            alert(`${JSON.stringify(res)}`)
-            setUser(res.data.user)
-            res.data && res.data.token && localStorage.setItem("user",JSON.stringify({user:res.data.user}))
-        }
-        else{
-            alert(`${JSON.stringify(res.response.data.error)}`)
-        }
-    }
-    setTimeout(() => {
-        setloading(false)
-    }, 500); 
-    return {status:true}
-   }
-
-  useEffect(() => {
-    // token && setTimeout(() => {
-    //   loadProfile()
-    // }, 500);
-  }, [token])
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+  <h2>{status ? "True" : "False"}</h2>
+
         <Box
           sx={{
             marginTop: 8,
@@ -116,6 +99,7 @@ export default  function SignIn() {
             <Button
               type="submit"
               fullWidth
+              loading={loading}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >

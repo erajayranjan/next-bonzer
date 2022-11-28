@@ -19,7 +19,7 @@
     
     const apiCall = axios.create({  
         baseURL: process.env.NEXT_PUBLIC_API_URL,
-        timeout: 3000,
+        timeout: 10000,
         headers: {
             "Content-Type" : "application/json",
             'authorization':bonzerCode && bonzerCode.token &&  bonzerCode.token,
